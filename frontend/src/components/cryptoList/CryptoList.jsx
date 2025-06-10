@@ -1,20 +1,18 @@
 import styles from './CryptoList.module.css'
 import CryptoItem from '../cryptoItem/CryptoItem'
-
-const mockItems = [
-	{ id: 'btc', name: 'Bitcoin', priceUsd: '109000' },
-	{ id: 'eth', name: 'Ethereum', priceUsd: '2700' },
-]
-
-const mockColors = ['#ff0000', '#00ff00']
+import useCryptoPagination from '../../hooks/useCryptoPagination'
 
 const CryptoList = () => {
+	const { items, colors, loading, loadMore } = useCryptoPagination() 
+
 	return (
 		<div className={styles.listContainer}>
-			{mockItems.map((item, idx) => (
-				<CryptoItem key={item.id} item={item} color={mockColors[idx]} />
+			{items.map((item, idx) => (
+				<CryptoItem key={item.id} item={item} color={colors[idx]} />
 			))}
-			<div className={styles.loader}>loader</div>
+			<div className={styles.loader}>{loading ? 'Loading...' : (
+				<button onClick={loadMore}>Load More</button>
+			)}</div>
 		</div>
 	)
 }
