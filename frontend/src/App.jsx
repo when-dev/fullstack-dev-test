@@ -1,7 +1,7 @@
-
+import CryptoList from './components/cryptoList/CryptoList'
 
 function App() {
-  return <></>
+  return <CryptoList />
 }
 
 export default App
