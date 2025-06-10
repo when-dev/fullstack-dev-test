@@ -39,7 +39,7 @@ const CryptoList = () => {
 				<CryptoItem key={item.id} item={item} color={colors[idx]} />
 			))}
 			<div className={styles.loader} ref={loaderRef}>
-				{loading ? 'Loading...': ''}
+				{loading && 'Loading...'}
 			</div>
 		</div>
 	)
